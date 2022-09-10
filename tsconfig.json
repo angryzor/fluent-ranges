@@ -1,0 +1,15 @@
+{
+  "include": ["./src/**/*.ts"],
+  "compilerOptions": {
+    "outDir": "./esm",
+    "target": "esnext",           
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "declaration": true
+  }
+}

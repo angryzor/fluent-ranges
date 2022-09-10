@@ -1,0 +1,57 @@
+{
+  "name": "fluent-ranges",
+  "version": "0.0.2",
+  "description": "Support for Intl ranges in fluent.js",
+  "type": "module",
+  "module": "./esm/index.js",
+  "main": "./index.cjs",
+  "types": "./esm/index.d.ts",
+  "exports": {
+    "import": "./esm/index.js",
+    "require": "./index.cjs"
+  },
+  "files": [
+    "./esm/**",
+    "./index.cjs"
+  ],
+  "scripts": {
+    "tsc": "tsc",
+    "rollup": "rollup",
+    "build:esm": "tsc -p ./tsconfig.json",
+    "build:cjs": "rollup -n FluentRanges --amd.id fluent-ranges -g '@fluent/bundle:FluentBundle' -f umd -i ./esm/index.js -o ./index.cjs",
+    "build": "run-s build:esm build:cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angryzor/fluent-ranges.git"
+  },
+  "keywords": [
+    "fluent",
+    "intl",
+    "ranges",
+    "l10n",
+    "i18n"
+  ],
+  "author": "angryzor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angryzor/fluent-ranges/issues"
+  },
+  "homepage": "https://github.com/angryzor/fluent-ranges#readme",
+  "peerDependencies": {
+    "@fluent/bundle": "^0.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/preset-env": "^7.19.0",
+    "@babel/preset-typescript": "^7.18.6",
+    "@fluent/bundle": "^0.17.1",
+    "@fluent/dedent": "^0.4.0",
+    "@types/jest": "^29.0.0",
+    "babel-jest": "^29.0.2",
+    "jest": "^29.0.2",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^2.79.0",
+    "typescript": "^4.8.2"
+  }
+}
