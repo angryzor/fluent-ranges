@@ -1,6 +1,6 @@
 {
   "name": "fluent-ranges",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Support for Intl ranges in fluent.js",
   "type": "module",
   "module": "./esm/index.js",
@@ -40,7 +40,9 @@
   },
   "homepage": "https://github.com/angryzor/fluent-ranges#readme",
   "jest": {
-    "setupFilesAfterEnv": ["jest-extended/all"],
+    "setupFilesAfterEnv": [
+      "jest-extended/all"
+    ],
     "moduleNameMapper": {
       "(.+)\\.js": "$1"
     }
