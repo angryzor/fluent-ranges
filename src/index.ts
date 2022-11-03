@@ -1,2 +1,2 @@
-export { FluentDateTimeRange, DATETIME_RANGE } from './datetime-range';
-export { FluentNumberRange, NUMBER_RANGE } from './number-range';
+export { FluentDateTimeRange, DATETIME_RANGE } from './datetime-range.js';
+export { FluentNumberRange, NUMBER_RANGE } from './number-range.js';

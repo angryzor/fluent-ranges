@@ -1,7 +1,7 @@
 import { FluentDateTime, FluentFunction, FluentNone, FluentNumber, FluentType } from '@fluent/bundle';
 import type { Scope } from '@fluent/bundle/esm/scope';
-import { FluentNumberRange } from './number-range';
-import { values } from './util';
+import { FluentNumberRange } from './number-range.js';
+import { values } from './util.js';
 
 export class FluentDateTimeRange extends FluentType<{ start: number, end: number }> {
 	public opts: Intl.DateTimeFormatOptions;
@@ -41,31 +41,19 @@ const DATETIME_ALLOWED = [
 
 export const DATETIME_RANGE: FluentFunction = ([start, end], opts) => {
 	if (start instanceof FluentNone || end instanceof FluentNone) {
-		return new FluentNone(`DATETIME_RANGE(${start.valueOf()}, ${end?.valueOf()})`);
+		return new FluentNone(`DATETIME_RANGE(${start.valueOf()}${end !== undefined ? `, ${end.valueOf()}` : ''})`);
 	}
 
-	if (start instanceof FluentDateTimeRange) {
+	if (start instanceof FluentDateTimeRange || start instanceof FluentNumberRange) {
 		return new FluentDateTimeRange(start.valueOf().start, start.valueOf().end, {
-			...start.opts,
+			...start instanceof FluentDateTimeRange ? start.opts : {},
 			...values(opts, DATETIME_ALLOWED),
 		});
 	}
 
-	if (start instanceof FluentDateTime && end instanceof FluentDateTime) {
+	if ((start instanceof FluentDateTime || start instanceof FluentNumber) && (end instanceof FluentDateTime || end instanceof FluentNumber)) {
 		return new FluentDateTimeRange(start.valueOf(), end.valueOf(), {
-			...start.opts,
-			...values(opts, DATETIME_ALLOWED),
-		});
-	}
-
-	if (start instanceof FluentNumberRange) {
-		return new FluentDateTimeRange(start.valueOf().start, start.valueOf().end, {
-			...values(opts, DATETIME_ALLOWED),
-		});
-	}
-
-	if (start instanceof FluentNumber && end instanceof FluentNumber) {
-		return new FluentDateTimeRange(start.valueOf(), end.valueOf(), {
+			...start instanceof FluentDateTime ? start.opts : end instanceof FluentDateTime ? end.opts : {},
 			...values(opts, DATETIME_ALLOWED),
 		});
 	}
