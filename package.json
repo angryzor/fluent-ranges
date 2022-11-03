@@ -1,6 +1,6 @@
 {
   "name": "fluent-ranges",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Support for Intl ranges in fluent.js",
   "type": "module",
   "module": "./esm/index.js",
