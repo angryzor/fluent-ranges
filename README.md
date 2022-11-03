@@ -4,6 +4,9 @@ fluent-ranges is an extension library for [fluent.js](https://github.com/project
 
 While fluent.js is an amazing solution for localization, by default it does not support the `formatRange` features of JavaScript's `Intl` API. This library adds those missing features.
 
+Note: Due to the fact that `Intl.NumberFormat.prototype.formatRange` is so experimental that it's only available in Firefox nightly, this part of the library
+is currently completely untested. However, it _should_ work.
+
 # Installation
 
 Simply install via npm:
